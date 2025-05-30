@@ -7,7 +7,7 @@ WIDTH, HEIGHT = 400, 400
 TILE_SIZE = WIDTH // 4
 FONT = pygame.font.SysFont("comicsansms", 40)
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("1024 Game")
+pygame.display.set_caption("2048 Game")
 
 WHITE = (250, 248, 239)
 BLACK = (119, 110, 101)
@@ -23,6 +23,7 @@ TILE_COLORS = {
     256: (237, 204, 97),
     512: (237, 200, 80),
     1024: (237, 197, 63),
+    2048: (237, 194, 46),
 }
 
 grid = [[0] * 4 for _ in range(4)]
@@ -39,7 +40,7 @@ def draw_grid():
         for c in range(4):
             val = grid[r][c]
             rect = pygame.Rect(c * TILE_SIZE, r * TILE_SIZE, TILE_SIZE, TILE_SIZE)
-            pygame.draw.rect(screen, TILE_COLORS.get(val, BLACK), rect)
+            pygame.draw.rect(screen, TILE_COLORS.get(val, (60, 58, 50)), rect)
             if val:
                 text = FONT.render(str(val), True, BLACK)
                 text_rect = text.get_rect(center=rect.center)
